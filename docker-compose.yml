@@ -1,0 +1,26 @@
+version: '3.8'
+
+x-node: &node
+  build: ./node
+  privileged: true
+  command: /sbin/init
+  tty: true
+
+services:
+  ansible:
+    container_name: 'ansible'
+    build: ./ansible
+    tty: true
+    working_dir: '/root/Ansible_Playbook'
+    volumes:
+      - Ansible_Playbook:/root/Ansible_Playbook
+
+  node01:
+    container_name: node01
+    <<: *node
+    ports:
+      - '8081:80'
+
+volumes:
+    Ansible_Playbook:
+        external: false

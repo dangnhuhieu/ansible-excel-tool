@@ -1,0 +1,97 @@
+os_users:
+- username: apache
+  userid: 10010
+  groupname: apache
+  groupid: 10010
+  password: apache
+  homedir: /home/apache
+  shell: /sbin/nologin
+- username: apache2
+  userid: 10011
+  groupname: apache
+  groupid: 10010
+  password: apache
+  homedir: /home/apache2
+  shell: /sbin/nologin
+lst_dic:
+- name: os_kernel
+  para_list:
+  - key: net.ipv4.ip_local_port_range
+    value: 32768 64999
+  - key: kernel.hung_task_warnings
+    value: 10000000
+  - key: net.ipv4.tcp_tw_recycle
+    value: 0
+  - key: net.core.somaxconn
+    value: 511
+- name: httpd_setting
+  para_list:
+  - key: LimitNOFILE
+    value: 65536
+  - key: LimitNPROC
+    value: 8192
+- name: httpd_conf
+  para_list:
+  - key: KeepAlive
+    value: 'Off'
+  - key: ServerLimit
+    value: 20
+  - key: ThreadLimit
+    value: 50
+  - key: StartServers
+    value: 20
+  - key: MaxRequestWorkers
+    value: 1000
+  - key: MinSpareThreads
+    value: 1000
+  - key: MaxSpareThreads
+    value: 1000
+  - key: ThreadsPerChild
+    value: 50
+  - key: MaxConnectionsPerChild
+    value: 0
+  - key: User
+    value: apache
+  - key: Group
+    value: apache
+  - key: ServerAdmin
+    value: root@localhost
+  - key: ServerName
+    value: web01:80
+  - key: ErrorLog
+    value: logs/error_log
+  - key: LogLevel
+    value: warn
+  - key: CustomLog
+    value: logs/access_log combined
+  - key: LogFormat
+    value: '"%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D" combined'
+  - key: Listen
+    value: 80
+  - key: ListenBackLog
+    value: 511
+  - key: ServerTokens
+    value: ProductOnly
+  - key: ServerSignature
+    value: 'Off'
+  - key: TraceEnable
+    value: 'Off'
+lst_lst_httpd_conf_a:
+- name: Include
+  para_list:
+  - conf.modules.d/00-base.conf
+  - conf.modules.d/00-mpm.conf
+  - conf.modules.d/00-systemd.conf
+- name: IncludeOptional
+  para_list:
+  - conf.d/autoindex.conf
+  - conf.d/welcome.conf
+lst_lst_httpd_conf_b:
+- name: <Directory />
+  para_list:
+  - AllowOverride None
+  - Require all denied
+  - Options FollowSymLinks
+- name: <Directory /var/www/html>
+  para_list:
+  - Require all granted

@@ -1,0 +1,15 @@
+---
+- debug: msg="******** DBG MSG(main.yml START!):********"
+- name: include pre_task.yml file
+  include_vars: "host_vars/{{ inventory_hostname }}.yml"
+
+- name: include pre_task.yml file
+  import_tasks: pre_task.yml
+  tags:
+    - pre_task
+
+- name: include install_httpd.yml file
+  import_tasks: install_httpd.yml
+  tags:
+    - install_httpd
+- debug: msg="******** DBG MSG(main.yml END!):********"

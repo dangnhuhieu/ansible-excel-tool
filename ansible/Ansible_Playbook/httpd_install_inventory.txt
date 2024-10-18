@@ -1,0 +1,8 @@
+
+[node]
+web01 ansible_host=172.19.0.5
+
+
+
+[node:vars]
+tmpdir="/tmp/"

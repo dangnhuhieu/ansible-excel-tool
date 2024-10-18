@@ -1,0 +1,49 @@
+os_users:
+- username: "tomcat9"
+  userid : 10009
+  groupname: infra
+  groupid: 10009
+- username: "apache"
+  userid : 10010
+  groupname: infra
+  groupid: 10010
+
+lst_dic:
+- name : "OS_KERNEL"
+  para_list :
+    - key : "net.ipv4.ip_local_port_range"
+      value : "32768 64999"
+    - key : "kernel.hung_task_warnings"
+      value : "10000000"
+- name : "HTTPD_SETTING"
+  para_list :
+    - key : "LimitNOFILE"
+      value : "65536"
+- name : "HTTPD_CONF"
+  para_list :
+    - key : "KeepAlive"
+      value : "Off"
+    - key : "ServerLimit"
+      value : "20"
+
+lst_lst_httpd_conf_a:
+- name : "Include"
+  para_list :
+    - "conf.modules.d/00-base.conf"
+    - "conf.modules.d/00-mpm.conf"
+    - "conf.modules.d/00-systemd.conf"
+- name : "IncludeOptional"
+  para_list :
+    - "conf.d/autoindex.conf"
+    - "conf.d/welcome.conf"
+
+lst_lst_httpd_conf_b:
+- name : "<Directory />"
+  para_list :
+    - "AllowOverride None"
+    - "Require all denied"
+- name : "<Directory/var/www/html>"
+  para_list:
+    - "Require all granted"
+
+      

@@ -1,0 +1,12 @@
+---
+
+- debug: msg="******** DBG MSG(httpd_install.yml START!):********"
+- name: install httpd
+  yum:
+    name: httpd
+    state: latest
+  changed_when: true
+  notify: Restart httpd
+- name: Flush handlers
+  meta: flush_handlers    
+- debug: msg="******** DBG MSG(httpd_install.yml END!):********"

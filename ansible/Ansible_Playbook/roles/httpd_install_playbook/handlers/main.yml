@@ -1,0 +1,7 @@
+---
+- name: start & enabled httpd
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+  listen : Restart httpd

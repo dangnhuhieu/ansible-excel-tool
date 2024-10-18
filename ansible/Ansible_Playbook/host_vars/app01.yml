@@ -1,0 +1,28 @@
+os_users:
+- username: tomcat9
+  userid: 10009
+  groupname: tomcat9
+  groupid: 10009
+  password: tomcat9
+  homedir: /home/tomcat9
+  shell: /sbin/nologin
+- username: tomcat9_2
+  userid: 10012
+  groupname: tomcat9
+  groupid: 10009
+  password: tomcat9
+  homedir: /home/tomcat9_2
+  shell: /sbin/nologin
+lst_dic:
+- name: os_kernel
+  para_list:
+  - key: net.ipv4.ip_local_port_range
+    value: 32768 64999
+  - key: net.ipv4.tcp_keepalive_intvl
+    value: 5
+  - key: net.ipv4.tcp_keepalive_probes
+    value: 5
+  - key: net.ipv4.tcp_keepalive_time
+    value: 60
+  - key: kernel.hung_task_warnings
+    value: 10000000

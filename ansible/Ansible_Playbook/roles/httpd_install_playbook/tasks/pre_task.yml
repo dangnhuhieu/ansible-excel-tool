@@ -1,0 +1,66 @@
+---
+
+- debug: msg="******** DBG MSG(pre_task.yml START!):********"
+- name: Ensure group exists
+  group:
+    name: "{{ item.groupname }}"
+    gid: "{{ item.groupid }}"
+    state: present
+  loop: "{{ os_users }}"
+
+- name: Create user
+  user:
+    name: "{{ item.username }}"
+    uid: "{{ item.userid }}"
+    group: "{{ item.groupname }}"
+    state: present
+  loop: "{{ os_users }}"
+
+- name: debug list kernel parameters
+  debug: 
+    msg="{{ item.key }} = {{ item.value }}"
+  with_items: "{{ lst_dic | selectattr('name', 'equalto', 'os_kernel') | map(attribute='para_list') | flatten }}"
+
+- name: debug systemd parameters
+  debug: 
+    msg="{{ item.key }} = {{ item.value }}"
+  with_items: "{{ lst_dic | selectattr('name', 'equalto', 'httpd_setting') | map(attribute='para_list') | flatten }}"
+
+- name: debug HTTPD.CONF parameters
+  debug: 
+    msg="{{ item.key }} = {{ item.value }}"
+  with_items: "{{ lst_dic | selectattr('name', 'equalto', 'httpd_conf') | map(attribute='para_list') | flatten }}"
+    
+- name: debug lst_lst_httpd_conf_a
+  debug: 
+    msg:
+    - "{{ item.0.name }}"
+    - "{{ item.1 }}"
+  loop: "{{ lst_lst_httpd_conf_a|subelements('para_list') }}"
+  loop_control:
+    label: "{{ item.0.name }}"
+
+- name: debug lst_lst_httpd_conf_b
+  debug: 
+    msg:
+    - "{{ item.0.name }}"
+    - "{{ item.1 }}"
+  loop: "{{ lst_lst_httpd_conf_b|subelements('para_list') }}"
+  loop_control:
+    label: "{{ item.0.name }}"
+
+# - name: debug2 HTTPD.CONF parameters
+  # debug:
+    # msg="{{ include_item }}"
+  # with_items: "{{ ddt | selectattr('name', 'equalto', 'HTTPD_CONF') | map(attribute='para_list') | flatten }}"
+  # loop_control:
+    # loop_var: include_item
+  # when: "'Include' in include_item.key"
+
+
+# - name: Debug3 HTTPD.CONF parameters
+  # debug:
+    # msg: "{{ item.key }} = {{ item.value }}"
+  # with_items: "{{ ddt | selectattr('name', 'equalto', 'HTTPD_CONF') | map(attribute='para_list') | flatten }}"
+  # when: "'Include' not in item.key"
+- debug: msg="******** DBG MSG(pre_task.yml END!):********"
