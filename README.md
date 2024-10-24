@@ -6,66 +6,21 @@
 <!-- 該当するプロジェクトの中から任意のものを選ぶ-->
 <p style="display: inline">
   <!-- フロントエンドのフレームワーク一覧 -->
-  <img src="https://img.shields.io/badge/-Node.js-000000.svg?logo=node.js&style=for-the-badge">
-  <img src="https://img.shields.io/badge/-Next.js-000000.svg?logo=next.js&style=for-the-badge">
-  <img src="https://img.shields.io/badge/-TailwindCSS-000000.svg?logo=tailwindcss&style=for-the-badge">
-  <img src="https://img.shields.io/badge/-React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
+  <img src="https://img.shields.io/badge/ansible-EE0000?style=plastic&logo=ansible&logoColor=white">
   <!-- バックエンドのフレームワーク一覧 -->
   <img src="https://img.shields.io/badge/-Django-092E20.svg?logo=django&style=for-the-badge">
   <!-- バックエンドの言語一覧 -->
   <img src="https://img.shields.io/badge/-Python-F2C63C.svg?logo=python&style=for-the-badge">
-  <!-- ミドルウェア一覧 -->
-  <img src="https://img.shields.io/badge/-Nginx-269539.svg?logo=nginx&style=for-the-badge">
-  <img src="https://img.shields.io/badge/-MySQL-4479A1.svg?logo=mysql&style=for-the-badge&logoColor=white">
-  <img src="https://img.shields.io/badge/-Gunicorn-199848.svg?logo=gunicorn&style=for-the-badge&logoColor=white">
   <!-- インフラ一覧 -->
   <img src="https://img.shields.io/badge/-Docker-1488C6.svg?logo=docker&style=for-the-badge">
-  <img src="https://img.shields.io/badge/-githubactions-FFFFFF.svg?logo=github-actions&style=for-the-badge">
-  <img src="https://img.shields.io/badge/-Amazon%20aws-232F3E.svg?logo=amazon-aws&style=for-the-badge">
-  <img src="https://img.shields.io/badge/-terraform-20232A?style=for-the-badge&logo=terraform&logoColor=844EBA">
 </p>
-
-## 目次
-
-1. [プロジェクトについて](#プロジェクトについて)
-2. [環境](#環境)
-3. [ディレクトリ構成](#ディレクトリ構成)
-4. [開発環境構築](#開発環境構築)
-5. [トラブルシューティング](#トラブルシューティング)
-
-<!-- READMEの作成方法のドキュメントのリンク -->
-<br />
-<div align="right">
-    <a href="READMEの作成方法のリンク"><strong>READMEの作成方法 »</strong></a>
-</div>
-<br />
-<!-- Dockerfileのドキュメントのリンク -->
-<div align="right">
-    <a href="Dockerfileの詳細リンク"><strong>Dockerfileの詳細 »</strong></a>
-</div>
-<br />
-<!-- プロジェクト名を記載 -->
-
-## プロジェクト名
-
-React、DRF、Terraform のテンプレートリポジトリ
 
 <!-- プロジェクトについて -->
 
 ## プロジェクトについて
 
-React、DRF、Terraform を勉強する際に使用できるテンプレート
-
-<!-- プロジェクトの概要を記載 -->
-
-  <p align="left">
-    <br />
-    <!-- プロジェクト詳細にBacklogのWikiのリンク -->
-    <a href="Backlogのwikiリンク"><strong>プロジェクト詳細 »</strong></a>
-    <br />
-    <br />
-
-<p align="right">(<a href="#top">トップへ</a>)</p>
+環境構築パラメータシート（Excelファイル形）からデータを読み取り、適切に処理してホスト変数のYAMLファイルを作成
+サンプルexcelファイルとホスト変数はApache導入に関するパラメータシートを例として作成されています。
 
 ## 環境
 
@@ -73,179 +28,187 @@ React、DRF、Terraform を勉強する際に使用できるテンプレート
 
 | 言語・フレームワーク  | バージョン |
 | --------------------- | ---------- |
-| Python                | 3.11.4     |
-| Django                | 4.2.1      |
-| Django Rest Framework | 3.14.0     |
-| MySQL                 | 8.0        |
-| Node.js               | 16.17.0    |
-| React                 | 18.2.0     |
-| Next.js               | 13.4.6     |
-| Terraform             | 1.3.6      |
-
-その他のパッケージのバージョンは pyproject.toml と package.json を参照してください
-
-<p align="right">(<a href="#top">トップへ</a>)</p>
+| Python                | python3.9     |
+| Docker                | 25.0.3      |
+| Ansible　　　　　　　　| 2.15     |
 
 ## ディレクトリ構成
 
 <!-- Treeコマンドを使ってディレクトリ構成を記載 -->
 
-❯ tree -a -I "node_modules|.next|.git|.pytest_cache|static" -L 2
-.
-├── .devcontainer
-│   └── devcontainer.json
-├── .env
-├── .github
-│   ├── action
-│   ├── release-drafter.yml
-│   └── workflows
-├── .gitignore
-├── Makefile
-├── README.md
-├── backend
-│   ├── .vscode
-│   ├── application
-│   ├── docs
-│   ├── manage.py
-│   ├── output
-│   ├── poetry.lock
-│   ├── project
-│   └── pyproject.toml
-├── containers
-│   ├── django
-│   ├── front
-│   ├── mysql
-│   └── nginx
-├── docker-compose.yml
-├── frontend
-│   ├── .gitignore
-│   ├── README.md
-│   ├── __test__
-│   ├── components
-│   ├── features
-│   ├── next-env.d.ts
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── pages
-│   ├── postcss.config.js
-│   ├── public
-│   ├── styles
-│   ├── tailwind.config.js
-│   └── tsconfig.json
-└── infra
-    ├── .gitignore
-    ├── docker-compose.yml
-    ├── main.tf
-    ├── network.tf
-    └── variables.tf
+ansible-excel-tool
+|   docker-compose.yml
+|   README.md
+|
++---ansible
+|   |   Dockerfile
+|   |
+|   \---Ansible_Playbook
+|       |   ansible.cfg
+|       |   httpd_install_inventory.txt
+|       |   httpd_install_playbook.yml
+|       |
+|       +---excel
+|       |   |   httpd_parameter_sheet.xlsx
+|       |   |   inventory.ini
+|       |   |   main.py
+|       |   |
+|       |   \---lib
+|       |       |   common.py
+|       |       |   header.py
+|       |
+|       +---host_vars
+|       |       app01.yml
+|       |       node01.yml
+|       |       web01.yml
+|       |       web02.yml
+|       |
+|       \---roles
+|           \---httpd_install_playbook
+|               +---handlers
+|               |       main.yml
+|               |
+|               +---tasks
+|               |       install_httpd.yml
+|               |       main.yml
+|               |       pre_task.yml
+|               |
+|               \---templates
+\---node
+        Dockerfile
 
-<p align="right">(<a href="#top">トップへ</a>)</p>
+<!-- コンテナの作成方法 -->
 
-## 開発環境構築
+## サンプル環境起動し、生成されたhost_varsを試してみる
 
-<!-- コンテナの作成方法、パッケージのインストール方法など、開発環境構築に必要な情報を記載 -->
+ansibleコンテナとnodeコンテナ作成と起動は以下の通りです。
+docker-compose build --no-cache
+docker-compose up -d
 
-### コンテナの作成と起動
+起動されたansibleコンテナとnodeコンテナのIPをメモする。
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ansible
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' node01
 
-.env ファイルを以下の環境変数例と[環境変数の一覧](#環境変数の一覧)を元に作成
+起動されたansibleコンテナにログインする。
+docker exec -it ansible /bin/bash
 
-.env
-MYSQL_ROOT_PASSWORD=root
-MYSQL_DATABASE=django-db
-MYSQL_USER=django
-MYSQL_PASSWORD=django
-MYSQL_HOST=db
-MYSQL_PORT=3306
-SECRET_KEY=django
-DJANGO_SETTINGS_MODULE=project.settings.local
+inventoryファイル編集
+nano httpd_install_inventory.txt
+[node]グループにあるIPをメモしたnodeコンテナのIPに更新してください。
+
+[node]グループあるIPにpingをテストする。
+ansible node -m ping -i httpd_install_inventory.txt
+
+ansibleプレイブックを実行
+ansible-playbook -i httpd_install_inventory.txt httpd_install_playbook.yml
+
+開発削除
+docker-compose down
+docker volume remove ansible-excel-tool_Ansible_Playbook
+docker images
+docker image rm ansible-excel-tool-ansible
+docker image rm ansible-excel-tool-node01
+
+## パラメータシート（httpd_parameter_sheet.xlsx）修正する方法
+4パターンを例として作成しています。
+パターン１：同じプロパティであるオブジェクトリスト
+例：RHELのOSユーザー一覧
+| パラメータ名              | 値                | 変数名                   
+| ----------------------| -----------------------------------------
+| ユーザ名１		 		| tomcat9	 		| lst-os_users-username    
+| ユーザID		 		| 10009	   			| lst-os_users-userid      
+| グループ		 			| Mtomcat9	    	| lst-os_users-groupname   
+| グループID		 		| 10009	    		| lst-os_users-groupid     
+| パスワード		 		| tomcat9	     	| lst-os_users-password    
+| ホームディレクトリ	 		| /home/tomcat9	    | lst-os_users-homedir     
+| シェル			 		| /sbin/nologin	   	| lst-os_users-shell       
+
+生成されるhost_vars変数、以下の通りでる。
+os_users:
+- username: apache
+  userid: 10010
+  groupname: apache
+  groupid: 10010
+  password: apache
+  homedir: /home/apache
+  shell: /sbin/nologin
+
+host_vars変数を利用する方法
+- name: Create user
+  user:
+    name: "{{ item.username }}"
+    uid: "{{ item.userid }}"
+    group: "{{ item.groupname }}"
+    state: present
+  loop: "{{ os_users }}"
+  
+ 
+パターン２：辞書のリスト
+例：RHELのカーネルパラメータ
+| パラメータ名              			| 値                | 変数名                   
+| ----------------------------------| -----------------------------------------
+| net.ipv4.ip_local_port_range 		| 32768 64999		| lst_dic-os_kernel  
+| net.ipv4.tcp_keepalive_intvl 		| 未定義				| lst_dic-os_kernel  
+| net.ipv4.tcp_keepalive_probes		| 未定義				| lst_dic-os_kernel  
+| net.ipv4.tcp_keepalive_time	 	| 未定義				| lst_dic-os_kernel  
+| kernel.hung_task_warnings	 		| 10000000			| lst_dic-os_kernel  
+| net.ipv4.tcp_tw_recycle		 	| 0   				| lst_dic-os_kernel  
+| net.core.somaxconn		 		| 511  				| lst_dic-os_kernel
+
+生成されるhost_vars変数、以下の通りでる。para_listは辞書のリストで、各辞書にはkeyとvalueのペアが含まれています。
+lst_dic:
+- name: os_kernel
+  para_list:
+  - key: net.ipv4.ip_local_port_range
+    value: 32768 64999
+  - key: kernel.hung_task_warnings
+    value: 10000000
+  - key: net.ipv4.tcp_tw_recycle
+    value: 0
+  - key: net.core.somaxconn
+    value: 511
+
+host_vars変数を利用する方法
+- name: debug list kernel parameters
+  debug: 
+    msg="{{ item.key }} = {{ item.value }}"
+  with_items: "{{ lst_dic | selectattr('name', 'equalto', 'os_kernel') | map(attribute='para_list') | flatten }}"
 
 
-.env ファイルを作成後、以下のコマンドで開発環境を構築
+パターン３：辞書のリスト、各辞書には、nameというキーと、para_listというキーがあります。para_listは文字列のリストです
+例：httpd.confの<Directory />タグ設定
+| パラメータ名              			| 値                | 変数名                   
+| ----------------------------------| -----------------------------------------
+| <Directory />				 		| 					| lst_lst-httpd_conf_b-name 
+| AllowOverride 					| None				| lst_lst-httpd_conf_b-para_list
+| Require							| all denied		| lst_lst-httpd_conf_b-para_list 
+| Options	 						| FollowSymLinks	| lst_lst-httpd_conf_b-para_list 
 
-make prepare
+生成されるhost_vars変数、以下の通りでる。
+lst_lst_httpd_conf_b:
+- name: <Directory />
+  para_list:
+  - AllowOverride None
+  - Require all denied
+  - Options FollowSymLinks
+  
+host_vars変数を利用する方法
+- name: debug lst_lst_httpd_conf_b
+  debug: 
+    msg:
+    - "{{ item.0.name }}"
+    - "{{ item.1 }}"
+  loop: "{{ lst_lst_httpd_conf_b|subelements('para_list') }}"
+  loop_control:
+    label: "{{ item.0.name }}"
 
-### 動作確認
+パターン４：パターン３と同じような形で、パラメータ名が空白である
 
-http://127.0.0.1:8000 にアクセスできるか確認
-アクセスできたら成功
+## inventoryファイル生成
+0.hostsシートの「自動化」例に〇が付いていれば、そのホストがinventoryファイルにいれされます。
+新規ホストをhostsシートに追加した後、設定シート（例は2.apacheシート）にも該当するホストの列を追加してください。
 
-### コンテナの停止
-
-以下のコマンドでコンテナを停止することができます
-
-make down
-
-### 環境変数の一覧
-
-| 変数名                 | 役割                                      | デフォルト値                       | DEV 環境での値                           |
-| ---------------------- | ----------------------------------------- | ---------------------------------- | ---------------------------------------- |
-| MYSQL_ROOT_PASSWORD    | MySQL のルートパスワード（Docker で使用） | root                               |                                          |
-| MYSQL_DATABASE         | MySQL のデータベース名（Docker で使用）   | django-db                          |                                          |
-| MYSQL_USER             | MySQL のユーザ名（Docker で使用）         | django                             |                                          |
-| MYSQL_PASSWORD         | MySQL のパスワード（Docker で使用）       | django                             |                                          |
-| MYSQL_HOST             | MySQL のホスト名（Docker で使用）         | db                                 |                                          |
-| MYSQL_PORT             | MySQL のポート番号（Docker で使用）       | 3306                               |                                          |
-| SECRET_KEY             | Django のシークレットキー                 | secretkey                          | 他者に推測されないランダムな値にすること |
-| ALLOWED_HOSTS          | リクエストを許可するホスト名              | localhost 127.0.0.1 [::1] back web | フロントのホスト名                       |
-| DEBUG                  | デバッグモードの切り替え                  | True                               | False                                    |
-| TRUSTED_ORIGINS        | CORS で許可するオリジン                   | http://localhost                   |                                          |
-| DJANGO_SETTINGS_MODULE | Django アプリケーションの設定モジュール   | project.settings.local             | project.settings.dev                     |
-
-### コマンド一覧
-
-| Make                | 実行する処理                                                            | 元のコマンド                                                                               |
-| ------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| make prepare        | node_modules のインストール、イメージのビルド、コンテナの起動を順に行う | docker-compose run --rm front npm install<br>docker-compose up -d --build                  |
-| make up             | コンテナの起動                                                          | docker-compose up -d                                                                       |
-| make build          | イメージのビルド                                                        | docker-compose build                                                                       |
-| make down           | コンテナの停止                                                          | docker-compose down                                                                        |
-| make loaddata       | テストデータの投入                                                      | docker-compose exec app poetry run python manage.py loaddata crm.json                      |
-| make makemigrations | マイグレーションファイルの作成                                          | docker-compose exec app poetry run python manage.py makemigrations                         |
-| make migrate        | マイグレーションを行う                                                  | docker-compose exec app poetry run python manage.py migrate                                |
-| make show_urls      | エンドポイントをターミナル上で一覧表示                                  | docker-compose exec app poetry run python manage.py show_urls                              |
-| make shell          | テストデータの投入                                                      | docker-compose exec app poetry run python manage.py debugsqlshell                          |
-| make superuser      | スーパーユーザの作成                                                    | docker-compose exec app poetry run python manage.py createsuperuser                        |
-| make test           | テストを実行                                                            | docker-compose exec app poetry run pytest                                                  |
-| make test-cov       | カバレッジを表示させた上でテストを実行                                  | docker-compose exec app poetry run pytest --cov                                            |
-| make format         | black と isort を使ってコードを整形                                     | docker-compose exec app poetry run black . <br> docker-compose exec app poetry run isort . |
-| make update         | Poetry 内のパッケージの更新                                             | docker-compose exec app poetry update                                                      |
-| make app            | アプリケーション のコンテナへ入る                                       | docker exec -it app bash                                                                   |
-| make db             | データベースのコンテナへ入る                                            | docker exec -it db bash                                                                    |
-| make pdoc           | pdoc ドキュメントの作成                                                 | docker-compose exec app env CI_MAKING_DOCS=1 poetry run pdoc -o docs application           |
-| make init           | Terraform の初期化                                                      | docker-compose -f infra/docker-compose.yml run --rm terraform init                         |
-| make fmt            | Terraform の設定ファイルをフォーマット                                  | docker-compose -f infra/docker-compose.yml run --rm terraform fmt                          |
-| make validate       | Terraform の構成ファイルが正常であることを確認                          | docker-compose -f infra/docker-compose.yml run --rm terraform validate                     |
-| make show           | 現在のリソースの状態を参照                                              | docker-compose -f infra/docker-compose.yml run --rm terraform show                         |
-| make apply          | Terraform の内容を適用                                                  | docker-compose -f infra/docker-compose.yml run --rm terraform apply                        |
-| make destroy        | Terraform で構成されたリソースを削除                                    | docker-compose -f infra/docker-compose.yml run --rm terraform destroy                      |
-
-### リモートデバッグの方法
-
-リモートデバッグ を使用する際は以下の url を参考に設定してください<br>
-[Django のコンテナへリモートデバッグしよう！](https://qiita.com/shun198/items/9e4fcb4479385217c323)
-
-## トラブルシューティング
-
-### .env: no such file or directory
-
-.env ファイルがないので環境変数の一覧を参考に作成しましょう
-
-### docker daemon is not running
-
-Docker Desktop が起動できていないので起動させましょう
-
-### Ports are not available: address already in use
-
-別のコンテナもしくはローカル上ですでに使っているポートがある可能性があります
-<br>
-下記記事を参考にしてください
-<br>
-[コンテナ起動時に Ports are not available: address already in use が出た時の対処法について](https://qiita.com/shun198/items/ab6eca4bbe4d065abb8f)
-
-### Module not found
-
-make build
-
-を実行して Docker image を更新してください
+## Discussion
+何ご質問がございましたら、<p align="right">(<a href="devopsroles.com">devopsroles.com</a>)</p>にてコメントをお入れください。
 
 <p align="right">(<a href="#top">トップへ</a>)</p>

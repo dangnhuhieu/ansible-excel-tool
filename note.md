@@ -20,7 +20,6 @@ ssh root@172.19.0.3
 ansible node -m ping -i httpd_install_inventory.txt
 # run as roles
 ansible-playbook -i httpd_install_inventory.txt httpd_install_playbook.yml
-ansible-playbook -i exec_order_inventory.txt exec_order_playbook.yml
 
 # remove all
 docker-compose down
@@ -29,9 +28,5 @@ docker images
 docker image rm ansible-excel-tool-ansible
 docker image rm ansible-excel-tool-node01
 
-# 変数名命名規則
-・lst:一覧
-・lst_dic:辞書の一覧
-・lst_lst:一覧の一覧
 # run python tool
 python .\ansible\Ansible_Playbook\excel\main.py httpd_parameter_sheet.xlsx
