@@ -1,41 +1,36 @@
-<div id="top"></div>　<br />
-　<br />
+<div id="top"></div>
 ## 使用技術一覧　<br />
-　<br />
-<!-- シールド一覧 -->　<br />
-<!-- 該当するプロジェクトの中から任意のものを選ぶ-->　<br />
-<p style="display: inline">　<br />
-  <!-- フロントエンドのフレームワーク一覧 -->　<br />
-  <img src="https://img.shields.io/badge/ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white">　<br />
+<!-- シールド一覧 -->
+<!-- 該当するプロジェクトの中から任意のものを選ぶ-->
+<p style="display: inline">
+  <!-- フロントエンドのフレームワーク一覧 -->
+  <img src="https://img.shields.io/badge/ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white">
   <!-- バックエンドのフレームワーク一覧 -->　<br />
-  <img src="https://img.shields.io/badge/-Django-092E20.svg?logo=django&style=for-the-badge">　<br />
+  <img src="https://img.shields.io/badge/-Django-092E20.svg?logo=django&style=for-the-badge">
   <!-- バックエンドの言語一覧 -->　<br />
-  <img src="https://img.shields.io/badge/-Python-F2C63C.svg?logo=python&style=for-the-badge">　<br />
+  <img src="https://img.shields.io/badge/-Python-F2C63C.svg?logo=python&style=for-the-badge">
   <!-- インフラ一覧 -->　<br />
-  <img src="https://img.shields.io/badge/-Docker-1488C6.svg?logo=docker&style=for-the-badge">　<br />
-</p>　<br />
-　<br />
-<!-- プロジェクトについて -->　<br />
-　<br />
-## プロジェクトについて　<br />
-　<br />
+  <img src="https://img.shields.io/badge/-Docker-1488C6.svg?logo=docker&style=for-the-badge">
+</p>
+
+<!-- プロジェクトについて -->
+## プロジェクトについて
+
 環境構築パラメータシート（Excelファイル形）からデータを読み取り、適切に処理してホスト変数のYAMLファイルを作成　<br />　<br />
 サンプルexcelファイルとホスト変数はApache導入に関するパラメータシートを例として作成されています。　<br />
 　<br />
-## 環境　<br />
-　<br />
-<!-- 言語、フレームワーク、ミドルウェア、インフラの一覧とバージョンを記載 -->　<br />
-　<br />
-| 言語・フレームワーク  | バージョン |　<br />
-| --------------------- | ---------- |　<br />
-| Python                | python3.9     |　<br />
-| Docker                | 25.0.3      |　<br />
-| Ansible　　　　　　　　| 2.15     |　<br />
-　<br />
-## ディレクトリ構成　<br />
-　<br />
-<!-- Treeコマンドを使ってディレクトリ構成を記載 -->　<br />
-　<br />
+## 環境
+<!-- 言語、フレームワーク、ミドルウェア、インフラの一覧とバージョンを記載 -->
+
+| 言語・フレームワーク  | バージョン |
+| --------------------- | ---------- |
+| Python                | python3.9     |
+| Docker                | 25.0.3      |
+| Ansible　　　　　　　　| 2.15     |
+
+## ディレクトリ構成
+
+<!-- Treeコマンドを使ってディレクトリ構成を記載 -->
 ansible-excel-tool　<br />
 |   docker-compose.yml　<br />
 |   README.md　<br />
@@ -77,10 +72,10 @@ ansible-excel-tool　<br />
 \---node　<br />
         Dockerfile　<br />
 　<br />
-<!-- コンテナの作成方法 -->　<br />
-　<br />
-## サンプル環境起動し、生成されたhost_varsを試してみる　<br />
-　<br />
+<!-- コンテナの作成方法 -->
+
+## サンプル環境起動し、生成されたhost_varsを試してみる
+
 ansibleコンテナとnodeコンテナ作成と起動は以下の通りです。　<br />
 docker-compose build --no-cache　<br />
 docker-compose up -d　<br />
@@ -109,19 +104,19 @@ docker images　<br />
 docker image rm ansible-excel-tool-ansible　<br />
 docker image rm ansible-excel-tool-node01　<br />
 　<br />
-## パラメータシート（httpd_parameter_sheet.xlsx）修正する方法　<br />
+## パラメータシート（httpd_parameter_sheet.xlsx）修正する方法
 4パターンを例として作成しています。　<br />
 パターン１：同じプロパティであるオブジェクトリスト　<br />
 例：RHELのOSユーザー一覧　<br />
-| パラメータ名              | 値                | 変数名                   　<br />
-| ----------------------| -----------------------------------------　<br />
-| ユーザ名１		 		| tomcat9	 		| lst-os_users-username    　<br />
-| ユーザID		 		| 10009	   			| lst-os_users-userid      　<br />
-| グループ		 			| Mtomcat9	    	| lst-os_users-groupname   　<br />
-| グループID		 		| 10009	    		| lst-os_users-groupid     　<br />
-| パスワード		 		| tomcat9	     	| lst-os_users-password    　<br />
-| ホームディレクトリ	 		| /home/tomcat9	    | lst-os_users-homedir     　<br />
-| シェル			 		| /sbin/nologin	   	| lst-os_users-shell       　<br />
+| パラメータ名              | 値                | 変数名                   　
+| ----------------------| -----------------------------------------
+| ユーザ名１		 		| tomcat9	 		| lst-os_users-username    　
+| ユーザID		 		| 10009	   			| lst-os_users-userid      　
+| グループ		 			| Mtomcat9	    	| lst-os_users-groupname   　
+| グループID		 		| 10009	    		| lst-os_users-groupid     　
+| パスワード		 		| tomcat9	     	| lst-os_users-password    　
+| ホームディレクトリ	 		| /home/tomcat9	    | lst-os_users-homedir     　
+| シェル			 		| /sbin/nologin	   	| lst-os_users-shell       　
 　<br />
 生成されるhost_vars変数、以下の通りでる。　<br />
 os_users:　<br />
@@ -145,15 +140,15 @@ host_vars変数を利用する方法　<br />
  　<br />
 パターン２：辞書のリスト　<br />
 例：RHELのカーネルパラメータ　<br />
-| パラメータ名              			| 値                | 変数名                   　<br />
-| ----------------------------------| -----------------------------------------　<br />
-| net.ipv4.ip_local_port_range 		| 32768 64999		| lst_dic-os_kernel  　<br />
-| net.ipv4.tcp_keepalive_intvl 		| 未定義				| lst_dic-os_kernel  　<br />
-| net.ipv4.tcp_keepalive_probes		| 未定義				| lst_dic-os_kernel  　<br />
-| net.ipv4.tcp_keepalive_time	 	| 未定義				| lst_dic-os_kernel  　<br />
-| kernel.hung_task_warnings	 		| 10000000			| lst_dic-os_kernel  　<br />
-| net.ipv4.tcp_tw_recycle		 	| 0   				| lst_dic-os_kernel  　<br />
-| net.core.somaxconn		 		| 511  				| lst_dic-os_kernel　<br />
+| パラメータ名              			| 値                | 変数名                   　
+| ----------------------------------| -----------------------------------------
+| net.ipv4.ip_local_port_range 		| 32768 64999		| lst_dic-os_kernel 
+| net.ipv4.tcp_keepalive_intvl 		| 未定義				| lst_dic-os_kernel 
+| net.ipv4.tcp_keepalive_probes		| 未定義				| lst_dic-os_kernel 
+| net.ipv4.tcp_keepalive_time	 	| 未定義				| lst_dic-os_kernel 
+| kernel.hung_task_warnings	 		| 10000000			| lst_dic-os_kernel 
+| net.ipv4.tcp_tw_recycle		 	| 0   				| lst_dic-os_kernel 
+| net.core.somaxconn		 		| 511  				| lst_dic-os_kernel　
 　<br />
 生成されるhost_vars変数、以下の通りでる。para_listは辞書のリストで、各辞書にはkeyとvalueのペアが含まれています。　<br />
 lst_dic:　<br />
@@ -177,12 +172,12 @@ host_vars変数を利用する方法　<br />
 　<br />
 パターン３：辞書のリスト、各辞書には、nameというキーと、para_listというキーがあります。para_listは文字列のリストです　<br />
 例：httpd.confの<Directory />タグ設定　<br />
-| パラメータ名              			| 値                | 変数名                   　<br />
-| ----------------------------------| -----------------------------------------　<br />
-| <Directory />				 		| 					| lst_lst-httpd_conf_b-name 　<br />
-| AllowOverride 					| None				| lst_lst-httpd_conf_b-para_list　<br />
-| Require							| all denied		| lst_lst-httpd_conf_b-para_list 　<br />
-| Options	 						| FollowSymLinks	| lst_lst-httpd_conf_b-para_list 　<br />
+| パラメータ名              			| 値                | 変数名                   　
+| ----------------------------------| -----------------------------------------
+| <Directory />				 		| 					| lst_lst-httpd_conf_b-name
+| AllowOverride 					| None				| lst_lst-httpd_conf_b-para_list
+| Require							| all denied		| lst_lst-httpd_conf_b-para_list 
+| Options	 						| FollowSymLinks	| lst_lst-httpd_conf_b-para_list 
 　<br />
 生成されるhost_vars変数、以下の通りでる。　<br />
 lst_lst_httpd_conf_b:　<br />
@@ -204,11 +199,11 @@ host_vars変数を利用する方法　<br />
 　<br />
 パターン４：パターン３と同じような形で、パラメータ名が空白である　<br />
 　<br />
-## inventoryファイル生成　<br />
+## inventoryファイル生成
 0.hostsシートの「自動化」例に〇が付いていれば、そのホストがinventoryファイルにいれされます。　<br />
 新規ホストをhostsシートに追加した後、設定シート（例は2.apacheシート）にも該当するホストの列を追加してください。　<br />
 　<br />
-## Discussion　<br />
+## Discussion
 何ご質問がございましたら、<p align="right">(<a href="devopsroles.com">devopsroles.com</a>)</p>にてコメントください。　<br />
-　<br />
-<p align="right">(<a href="#top">トップへ</a>)</p>　<br />
+
+<p align="right">(<a href="#top">トップへ</a>)</p>
