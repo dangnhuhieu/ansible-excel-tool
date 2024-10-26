@@ -164,16 +164,17 @@ host_vars変数を利用する方法　<br />
   debug: 　<br />
     msg="{{ item.key }} = {{ item.value }}"　<br />
   with_items: "{{ lst_dic | selectattr('name', 'equalto', 'os_kernel') | map(attribute='para_list') | flatten }}"　<br />
-　<br />
-　<br />
+
 パターン３：辞書のリスト、各辞書には、nameというキーと、para_listというキーがあります。para_listは文字列のリストです　<br />
 例：httpd.confの<Directory />タグ設定　<br />
 
 
 | First Header  | Second Header | Second Header |
 | ------------- | ------------- | ------------- |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
+| <Directory / >  |    | lst_lst-httpd_conf_b-name  |
+| AllowOverride  | Content Cell  | Content Cell  |
+| Require  | Content Cell  | Content Cell  |
+| Options  | Content Cell  | Content Cell  |
 
 生成されるhost_vars変数、以下の通りでる。　<br />
 lst_lst_httpd_conf_b:　<br />
