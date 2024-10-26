@@ -5,8 +5,6 @@
 <p style="display: inline">
   <!-- フロントエンドのフレームワーク一覧 -->
   <img src="https://img.shields.io/badge/ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white">
-  <!-- バックエンドのフレームワーク一覧 -->
-  <img src="https://img.shields.io/badge/-Django-092E20.svg?logo=django&style=for-the-badge">
   <!-- バックエンドの言語一覧 -->
   <img src="https://img.shields.io/badge/-Python-F2C63C.svg?logo=python&style=for-the-badge">
   <!-- インフラ一覧 -->
@@ -170,12 +168,12 @@ host_vars変数を利用する方法　<br />
 　<br />
 パターン３：辞書のリスト、各辞書には、nameというキーと、para_listというキーがあります。para_listは文字列のリストです　<br />
 例：httpd.confの<Directory />タグ設定　<br />
-| パラメータ名                 | 値                                      | 変数名                       |
-| ---------------------- | ----------------------------------------- | ---------------------------------- |
-| <Directory / >    |   | lst_lst-httpd_conf_b-name                               |
-| AllowOverride         | None   | lst_lst-httpd_conf_b-para_list                         |
-| Require             | all denied         | lst_lst-httpd_conf_b-para_list                             |
-| Options         | FollowSymLinks      | lst_lst-httpd_conf_b-para_list                             |
+
+
+| First Header  | Second Header | Second Header |
+| ------------- | ------------- | ------------- |
+| Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  |
 
 生成されるhost_vars変数、以下の通りでる。　<br />
 lst_lst_httpd_conf_b:　<br />
