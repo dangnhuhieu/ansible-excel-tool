@@ -172,9 +172,9 @@ host_vars変数を利用する方法　<br />
 | First Header  | Second Header | Second Header |
 | ------------- | ------------- | ------------- |
 | <Directory / >  |    | lst_lst-httpd_conf_b-name  |
-| AllowOverride  | Content Cell  | Content Cell  |
-| Require  | Content Cell  | Content Cell  |
-| Options  | Content Cell  | Content Cell  |
+| AllowOverride  | None  | lst_lst-httpd_conf_b-para_list  |
+| Require  | all denied  | lst_lst-httpd_conf_b-para_list  |
+| Options  | FollowSymLinks  | lst_lst-httpd_conf_b-para_list  |
 
 生成されるhost_vars変数、以下の通りでる。　<br />
 lst_lst_httpd_conf_b:　<br />
