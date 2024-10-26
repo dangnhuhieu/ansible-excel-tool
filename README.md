@@ -108,15 +108,15 @@ docker image rm ansible-excel-tool-node01　<br />
 4パターンを例として作成しています。　<br />
 パターン１：同じプロパティであるオブジェクトリスト　<br />
 例：RHELのOSユーザー一覧　<br />
-| パラメータ名              | 値                | 変数名                   　
-| ----------------------| -----------------------------------------
-| ユーザ名１		 		| tomcat9	 		| lst-os_users-username    　
-| ユーザID		 		| 10009	   			| lst-os_users-userid      　
-| グループ		 			| Mtomcat9	    	| lst-os_users-groupname   　
-| グループID		 		| 10009	    		| lst-os_users-groupid     　
-| パスワード		 		| tomcat9	     	| lst-os_users-password    　
-| ホームディレクトリ	 		| /home/tomcat9	    | lst-os_users-homedir     　
-| シェル			 		| /sbin/nologin	   	| lst-os_users-shell       　
+| パラメータ名              | 値                | 変数名 |                   　
+| ----------------------| ----------------------------------------- |
+| ユーザ名１		 		| tomcat9	 		| lst-os_users-username  |  　
+| ユーザID		 		| 10009	   			| lst-os_users-userid  |    　
+| グループ		 			| Mtomcat9	    	| lst-os_users-groupname  | 　
+| グループID		 		| 10009	    		| lst-os_users-groupid  |   　
+| パスワード		 		| tomcat9	     	| lst-os_users-password  |  　
+| ホームディレクトリ	 		| /home/tomcat9	    | lst-os_users-homedir  |  　
+| シェル			 		| /sbin/nologin	   	| lst-os_users-shell    |  　
 　<br />
 生成されるhost_vars変数、以下の通りでる。　<br />
 os_users:　<br />
@@ -140,15 +140,15 @@ host_vars変数を利用する方法　<br />
  　<br />
 パターン２：辞書のリスト　<br />
 例：RHELのカーネルパラメータ　<br />
-| パラメータ名              			| 値                | 変数名                   　
-| ----------------------------------| -----------------------------------------
-| net.ipv4.ip_local_port_range 		| 32768 64999		| lst_dic-os_kernel 
-| net.ipv4.tcp_keepalive_intvl 		| 未定義				| lst_dic-os_kernel 
-| net.ipv4.tcp_keepalive_probes		| 未定義				| lst_dic-os_kernel 
-| net.ipv4.tcp_keepalive_time	 	| 未定義				| lst_dic-os_kernel 
-| kernel.hung_task_warnings	 		| 10000000			| lst_dic-os_kernel 
-| net.ipv4.tcp_tw_recycle		 	| 0   				| lst_dic-os_kernel 
-| net.core.somaxconn		 		| 511  				| lst_dic-os_kernel　
+| パラメータ名              			| 値                | 変数名       |           　
+| ----------------------------------| -----------------------------------------|
+| net.ipv4.ip_local_port_range 		| 32768 64999		| lst_dic-os_kernel |
+| net.ipv4.tcp_keepalive_intvl 		| 未定義				| lst_dic-os_kernel |
+| net.ipv4.tcp_keepalive_probes		| 未定義				| lst_dic-os_kernel |
+| net.ipv4.tcp_keepalive_time	 	| 未定義				| lst_dic-os_kernel |
+| kernel.hung_task_warnings	 		| 10000000			| lst_dic-os_kernel |
+| net.ipv4.tcp_tw_recycle		 	| 0   				| lst_dic-os_kernel |
+| net.core.somaxconn		 		| 511  				| lst_dic-os_kernel |
 　<br />
 生成されるhost_vars変数、以下の通りでる。para_listは辞書のリストで、各辞書にはkeyとvalueのペアが含まれています。　<br />
 lst_dic:　<br />
@@ -172,12 +172,12 @@ host_vars変数を利用する方法　<br />
 　<br />
 パターン３：辞書のリスト、各辞書には、nameというキーと、para_listというキーがあります。para_listは文字列のリストです　<br />
 例：httpd.confの<Directory />タグ設定　<br />
-| パラメータ名              			| 値                | 変数名                   　
-| ----------------------------------| -----------------------------------------
-| <Directory />				 		| 					| lst_lst-httpd_conf_b-name
-| AllowOverride 					| None				| lst_lst-httpd_conf_b-para_list
-| Require							| all denied		| lst_lst-httpd_conf_b-para_list 
-| Options	 						| FollowSymLinks	| lst_lst-httpd_conf_b-para_list 
+| パラメータ名              			| 値                | 変数名     |              　
+| ----------------------------------| -----------------------------------------|
+| <Directory />				 		| 					| lst_lst-httpd_conf_b-name|
+| AllowOverride 					| None				| lst_lst-httpd_conf_b-para_list |
+| Require							| all denied		| lst_lst-httpd_conf_b-para_list |
+| Options	 						| FollowSymLinks	| lst_lst-httpd_conf_b-para_list |
 　<br />
 生成されるhost_vars変数、以下の通りでる。　<br />
 lst_lst_httpd_conf_b:　<br />
@@ -202,8 +202,8 @@ host_vars変数を利用する方法　<br />
 ## inventoryファイル生成
 0.hostsシートの「自動化」例に〇が付いていれば、そのホストがinventoryファイルにいれされます。　<br />
 新規ホストをhostsシートに追加した後、設定シート（例は2.apacheシート）にも該当するホストの列を追加してください。　<br />
-　<br />
+
 ## Discussion
-何ご質問がございましたら、<p align="right">(<a href="devopsroles.com">devopsroles.com</a>)</p>にてコメントください。　<br />
+何ご質問がございましたら、<a href="devopsroles.com">devopsroles.com</a>にてコメントください。　<br />
 
 <p align="right">(<a href="#top">トップへ</a>)</p>
