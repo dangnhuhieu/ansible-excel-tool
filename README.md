@@ -5,11 +5,11 @@
 <p style="display: inline">
   <!-- フロントエンドのフレームワーク一覧 -->
   <img src="https://img.shields.io/badge/ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white">
-  <!-- バックエンドのフレームワーク一覧 -->　<br />
+  <!-- バックエンドのフレームワーク一覧 -->
   <img src="https://img.shields.io/badge/-Django-092E20.svg?logo=django&style=for-the-badge">
-  <!-- バックエンドの言語一覧 -->　<br />
+  <!-- バックエンドの言語一覧 -->
   <img src="https://img.shields.io/badge/-Python-F2C63C.svg?logo=python&style=for-the-badge">
-  <!-- インフラ一覧 -->　<br />
+  <!-- インフラ一覧 -->
   <img src="https://img.shields.io/badge/-Docker-1488C6.svg?logo=docker&style=for-the-badge">
 </p>
 
@@ -107,17 +107,18 @@ docker image rm ansible-excel-tool-node01　<br />
 ## パラメータシート（httpd_parameter_sheet.xlsx）修正する方法
 4パターンを例として作成しています。　<br />
 パターン１：同じプロパティであるオブジェクトリスト　<br />
-例：RHELのOSユーザー一覧　<br />
-| パラメータ名              | 値                | 変数名 |                   　
+例：RHELのOSユーザー一覧
+| パラメータ名              | 値                | 変数名 |
 | ----------------------| ----------------------------------------- |
-| ユーザ名１		 		| tomcat9	 		| lst-os_users-username  |  　
-| ユーザID		 		| 10009	   			| lst-os_users-userid  |    　
-| グループ		 			| Mtomcat9	    	| lst-os_users-groupname  | 　
-| グループID		 		| 10009	    		| lst-os_users-groupid  |   　
-| パスワード		 		| tomcat9	     	| lst-os_users-password  |  　
-| ホームディレクトリ	 		| /home/tomcat9	    | lst-os_users-homedir  |  　
-| シェル			 		| /sbin/nologin	   	| lst-os_users-shell    |  　
-　<br />
+| ユーザ名１		 		| tomcat9	 		| lst-os_users-username  |
+| ユーザID		 		| 10009	   			| lst-os_users-userid  |
+| グループ		 			| Mtomcat9	    	| lst-os_users-groupname  |
+| グループID		 		| 10009	    		| lst-os_users-groupid  |
+| パスワード		 		| tomcat9	     	| lst-os_users-password  |
+| ホームディレクトリ	 		| /home/tomcat9	    | lst-os_users-homedir  |
+| シェル			 		| /sbin/nologin	   	| lst-os_users-shell    |
+ 　
+
 生成されるhost_vars変数、以下の通りでる。　<br />
 os_users:　<br />
 - username: apache　<br />
@@ -140,7 +141,7 @@ host_vars変数を利用する方法　<br />
  　<br />
 パターン２：辞書のリスト　<br />
 例：RHELのカーネルパラメータ　<br />
-| パラメータ名              			| 値                | 変数名       |           　
+| パラメータ名              			| 値                | 変数名       |
 | ----------------------------------| -----------------------------------------|
 | net.ipv4.ip_local_port_range 		| 32768 64999		| lst_dic-os_kernel |
 | net.ipv4.tcp_keepalive_intvl 		| 未定義				| lst_dic-os_kernel |
@@ -172,7 +173,7 @@ host_vars変数を利用する方法　<br />
 　<br />
 パターン３：辞書のリスト、各辞書には、nameというキーと、para_listというキーがあります。para_listは文字列のリストです　<br />
 例：httpd.confの<Directory />タグ設定　<br />
-| パラメータ名              			| 値                | 変数名     |              　
+| パラメータ名              			| 値                | 変数名     |
 | ----------------------------------| -----------------------------------------|
 | <Directory />				 		| 					| lst_lst-httpd_conf_b-name|
 | AllowOverride 					| None				| lst_lst-httpd_conf_b-para_list |
