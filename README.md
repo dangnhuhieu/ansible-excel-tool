@@ -172,7 +172,7 @@ host_vars変数を利用する方法　<br />
 例：httpd.confの<Directory />タグ設定　<br />
 | パラメータ名                 | 値                                      | 変数名                       |
 | ---------------------- | ----------------------------------------- | ---------------------------------- |
-| <Directory />    |  | lst_lst-httpd_conf_b-name                               |
+| <Directory />    | 　 | lst_lst-httpd_conf_b-name                               |
 | AllowOverride         | None   | lst_lst-httpd_conf_b-para_list                          |
 | Require             | all denied         | lst_lst-httpd_conf_b-para_list                             |
 | Options         | FollowSymLinks      | lst_lst-httpd_conf_b-para_list                             |
