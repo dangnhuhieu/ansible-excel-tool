@@ -127,7 +127,6 @@ os_users:　<br />
   password: apache　<br />
   homedir: /home/apache　<br />
   shell: /sbin/nologin　<br />
-　<br />
 host_vars変数を利用する方法　<br />
 - name: Create user　<br />
   user:　<br />
@@ -136,20 +135,19 @@ host_vars変数を利用する方法　<br />
     group: "{{ item.groupname }}"　<br />
     state: present　<br />
   loop: "{{ os_users }}"　<br />
-  　<br />
- 　<br />
+
 パターン２：辞書のリスト　<br />
 例：RHELのカーネルパラメータ　<br />
-| パラメータ名              			| 値                | 変数名       |
-| ----------------------------------| -----------------------------------------|
-| net.ipv4.ip_local_port_range 		| 32768 64999		| lst_dic-os_kernel |
-| net.ipv4.tcp_keepalive_intvl 		| 未定義				| lst_dic-os_kernel |
-| net.ipv4.tcp_keepalive_probes		| 未定義				| lst_dic-os_kernel |
-| net.ipv4.tcp_keepalive_time	 	| 未定義				| lst_dic-os_kernel |
-| kernel.hung_task_warnings	 		| 10000000			| lst_dic-os_kernel |
-| net.ipv4.tcp_tw_recycle		 	| 0   				| lst_dic-os_kernel |
-| net.core.somaxconn		 		| 511  				| lst_dic-os_kernel |
-　<br />
+| パラメータ名                 | 値                                      | 変数名                       |
+| ---------------------- | ----------------------------------------- | ---------------------------------- |
+| net.ipv4.ip_local_port_range    | 32768 64999 | lst_dic-os_kernel                               |
+| net.ipv4.tcp_keepalive_intvl         | 未定義   | lst_dic-os_kernel                         |
+| net.ipv4.tcp_keepalive_probes             | 未定義         | lst_dic-os_kernel                             |
+| net.ipv4.tcp_keepalive_time         | 未定義      | lst_dic-os_kernel                             |
+| kernel.hung_task_warnings             | 10000000         | lst_dic-os_kernel                                 |
+| net.ipv4.tcp_tw_recycle             | 0       | lst_dic-os_kernel                               |
+| net.core.somaxconn             | 511                | lst_dic-os_kernel                          |
+
 生成されるhost_vars変数、以下の通りでる。para_listは辞書のリストで、各辞書にはkeyとvalueのペアが含まれています。　<br />
 lst_dic:　<br />
 - name: os_kernel　<br />
@@ -162,7 +160,7 @@ lst_dic:　<br />
     value: 0　<br />
   - key: net.core.somaxconn　<br />
     value: 511　<br />
-　<br />
+
 host_vars変数を利用する方法　<br />
 - name: debug list kernel parameters　<br />
   debug: 　<br />
@@ -172,13 +170,13 @@ host_vars変数を利用する方法　<br />
 　<br />
 パターン３：辞書のリスト、各辞書には、nameというキーと、para_listというキーがあります。para_listは文字列のリストです　<br />
 例：httpd.confの<Directory />タグ設定　<br />
-| パラメータ名              			| 値                | 変数名     |
-| ----------------------------------| -----------------------------------------|
-| <Directory />				 		| 					| lst_lst-httpd_conf_b-name|
-| AllowOverride 					| None				| lst_lst-httpd_conf_b-para_list |
-| Require							| all denied		| lst_lst-httpd_conf_b-para_list |
-| Options	 						| FollowSymLinks	| lst_lst-httpd_conf_b-para_list |
-　<br />
+| パラメータ名                 | 値                                      | 変数名                       |
+| ---------------------- | ----------------------------------------- | ---------------------------------- |
+| <Directory />    |  | lst_lst-httpd_conf_b-name                               |
+| AllowOverride         | None   | lst_lst-httpd_conf_b-para_list                          |
+| Require             | all denied         | lst_lst-httpd_conf_b-para_list                             |
+| Options         | FollowSymLinks      | lst_lst-httpd_conf_b-para_list                             |
+
 生成されるhost_vars変数、以下の通りでる。　<br />
 lst_lst_httpd_conf_b:　<br />
 - name: <Directory />　<br />
