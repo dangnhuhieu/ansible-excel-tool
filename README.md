@@ -107,16 +107,17 @@ docker image rm ansible-excel-tool-node01　<br />
 ## パラメータシート（httpd_parameter_sheet.xlsx）修正する方法
 4パターンを例として作成しています。　<br />
 パターン１：同じプロパティであるオブジェクトリスト　<br />
-例：RHELのOSユーザー一覧
-| パラメータ名              | 値                | 変数名 |
+例：RHELのOSユーザー一覧　<br />
+
+| パラメータ名    | 値    | 変数名    |
 | ----------------------| ----------------------------------------- |
-| ユーザ名１		 		| tomcat9	 		| lst-os_users-username  |
-| ユーザID		 		| 10009	   			| lst-os_users-userid  |
-| グループ		 			| Mtomcat9	    	| lst-os_users-groupname  |
-| グループID		 		| 10009	    		| lst-os_users-groupid  |
-| パスワード		 		| tomcat9	     	| lst-os_users-password  |
-| ホームディレクトリ	 		| /home/tomcat9	    | lst-os_users-homedir  |
-| シェル			 		| /sbin/nologin	   	| lst-os_users-shell    |
+| ユーザ名１	   | tomcat9	 		| lst-os_users-username  |
+| ユーザID	   | tomcat9	 		| lst-os_users-userid  |
+| グループ	   | tomcat9	 		| lst-os_users-groupname  |
+| グループID	   | 10009	 		| lst-os_users-groupid  |
+| パスワード	   | tomcat9	 		| lst-os_users-password  |
+| ホームディレクトリ	   | /home/tomcat9	 		| lst-os_users-homedir  |
+| シェル	   | /sbin/nologin	 		| lst-os_users-shell  |
  　
 
 生成されるhost_vars変数、以下の通りでる。　<br />
