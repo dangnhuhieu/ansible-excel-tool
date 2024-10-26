@@ -119,6 +119,10 @@ docker image rm ansible-excel-tool-node01　<br />
 | ホームディレクトリ	   | /home/tomcat9	 		| lst-os_users-homedir  |
 | シェル	   | /sbin/nologin	 		| lst-os_users-shell  |
  　
+| パラメータ名  | 値 | 変数名 |
+| --------------------- | ---------- | --------------------- |
+| ユーザ名１                | tomcat9     | lst-os_users-username     |
+
 
 生成されるhost_vars変数、以下の通りでる。　<br />
 os_users:　<br />
