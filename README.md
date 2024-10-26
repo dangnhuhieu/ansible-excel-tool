@@ -29,47 +29,48 @@
 ## ディレクトリ構成
 
 <!-- Treeコマンドを使ってディレクトリ構成を記載 -->
-ansible-excel-tool　<br />
-|   docker-compose.yml　<br />
-|   README.md　<br />
-|　<br />
-+---ansible　<br />
-|   |   Dockerfile　<br />
-|   |　<br />
-|   \---Ansible_Playbook　<br />
-|       |   ansible.cfg　<br />
-|       |   httpd_install_inventory.txt　<br />
-|       |   httpd_install_playbook.yml　<br />
-|       |　<br />
-|       +---excel　<br />
-|       |   |   httpd_parameter_sheet.xlsx　<br />
-|       |   |   inventory.ini　<br />
-|       |   |   main.py　<br />
-|       |   |　<br />
-|       |   \---lib　<br />
-|       |       |   common.py　<br />
-|       |       |   header.py　<br />
-|       |　<br />
-|       +---host_vars　<br />
-|       |       app01.yml　<br />
-|       |       node01.yml　<br />
-|       |       web01.yml　<br />
-|       |       web02.yml　<br />
-|       |　<br />
-|       \---roles　<br />
-|           \---httpd_install_playbook　<br />
-|               +---handlers　<br />
-|               |       main.yml　<br />
-|               |　<br />
-|               +---tasks　<br />
-|               |       install_httpd.yml　<br />
-|               |       main.yml　<br />
-|               |       pre_task.yml　<br />
-|               |　<br />
-|               \---templates　<br />
-\---node　<br />
-        Dockerfile　<br />
-　<br />
+```
+ansible-excel-tool
+|   docker-compose.yml
+|   README.md
+|
++---ansible
+|   |   Dockerfile
+|   |
+|   \---Ansible_Playbook
+|       |   ansible.cfg
+|       |   httpd_install_inventory.txt
+|       |   httpd_install_playbook.yml
+|       |
+|       +---excel
+|       |   |   httpd_parameter_sheet.xlsx
+|       |   |   inventory.ini
+|       |   |   main.py
+|       |   |
+|       |   \---lib
+|       |       |   common.py
+|       |       |   header.py
+|       |
+|       +---host_vars
+|       |       app01.yml
+|       |       node01.yml
+|       |       web01.yml
+|       |       web02.yml
+|       |
+|       \---roles
+|           \---httpd_install_playbook
+|               +---handlers
+|               |       main.yml
+|               |
+|               +---tasks
+|               |       install_httpd.yml
+|               |       main.yml
+|               |       pre_task.yml
+|               |
+|               \---templates
+\---node
+        Dockerfile
+```
 <!-- コンテナの作成方法 -->
 
 ## サンプル環境起動し、生成されたhost_varsを試してみる
