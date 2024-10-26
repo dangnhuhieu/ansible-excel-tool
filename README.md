@@ -74,37 +74,51 @@ ansible-excel-tool　<br />
 
 ## サンプル環境起動し、生成されたhost_varsを試してみる
 
-ansibleコンテナとnodeコンテナ作成と起動は以下の通りです。　<br />
-docker-compose build --no-cache　<br />
-docker-compose up -d　<br />
-　<br />
-起動されたansibleコンテナとnodeコンテナのIPをメモする。　<br />
-docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ansible　<br />
-docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' node01　<br />
-　<br />
-起動されたansibleコンテナにログインする。　<br />
-docker exec -it ansible /bin/bash　<br />
-　<br />
-inventoryファイル編集　<br />
-nano httpd_install_inventory.txt　<br />
+**ansibleコンテナとnodeコンテナ作成と起動は以下の通りです。**　<br />
+```
+docker-compose build --no-cache
+docker-compose up -d
+```
+
+**起動されたansibleコンテナとnodeコンテナのIPをメモする。**　<br />
+```
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ansible
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' node01
+```
+
+**起動されたansibleコンテナにログインする。**　<br />
+```
+docker exec -it ansible /bin/bash
+```
+
+**inventoryファイル編集**　<br />
 [node]グループにあるIPをメモしたnodeコンテナのIPに更新してください。　<br />
-　<br />
-[node]グループあるIPにpingをテストする。　<br />
-ansible node -m ping -i httpd_install_inventory.txt　<br />
-　<br />
-ansibleプレイブックを実行　<br />
-ansible-playbook -i httpd_install_inventory.txt httpd_install_playbook.yml　<br />
-　<br />
-開発削除　<br />
-docker-compose down　<br />
-docker volume remove ansible-excel-tool_Ansible_Playbook　<br />
-docker images　<br />
-docker image rm ansible-excel-tool-ansible　<br />
-docker image rm ansible-excel-tool-node01　<br />
-　<br />
+```
+nano httpd_install_inventory.txt
+```
+
+**[node]グループあるIPにpingをテストする。**　<br />
+```
+ansible node -m ping -i httpd_install_inventory.txt
+```
+
+**ansibleプレイブックを実行**　<br />
+```
+ansible-playbook -i httpd_install_inventory.txt httpd_install_playbook.yml
+```
+
+**開発削除**　<br />
+```
+docker-compose down
+docker volume remove ansible-excel-tool_Ansible_Playbook
+docker images
+docker image rm ansible-excel-tool-ansible
+docker image rm ansible-excel-tool-node01
+```
+
 ## パラメータシート（httpd_parameter_sheet.xlsx）修正する方法
-4パターンを例として作成しています。　<br />
-パターン１：同じプロパティであるオブジェクトリスト　<br />
+**4パターンを例として作成しています。**　<br />
+**パターン１：同じプロパティであるオブジェクトリスト**　<br />
 例：RHELのOSユーザー一覧　<br /> 　
 | パラメータ名                 | 値                                      | 変数名                       |
 | ---------------------- | ----------------------------------------- | ---------------------------------- |
@@ -116,25 +130,31 @@ docker image rm ansible-excel-tool-node01　<br />
 | ホームディレクトリ             | /home/tomcat9       | lst-os_users-homedir                               |
 | シェル             | /sbin/nologin                | lst-os_users-shell                          |
 
-生成されるhost_vars変数、以下の通りでる。　<br />
+**生成されるhost_vars変数、以下の通りでる。**　<br />
+```
 os_users:　<br />
-- username: apache　<br />
-  userid: 10010　<br />
-  groupname: apache　<br />
-  groupid: 10010　<br />
-  password: apache　<br />
-  homedir: /home/apache　<br />
-  shell: /sbin/nologin　<br />
-host_vars変数を利用する方法　<br />
-- name: Create user　<br />
-  user:　<br />
-    name: "{{ item.username }}"　<br />
-    uid: "{{ item.userid }}"　<br />
-    group: "{{ item.groupname }}"　<br />
-    state: present　<br />
-  loop: "{{ os_users }}"　<br />
+- username: apache
+  userid: 10010
+  groupname: apache
+  groupid: 10010
+  password: apache
+  homedir: /home/apache
+  shell: /sbin/nologin
+```
 
-パターン２：辞書のリスト　<br />
+**host_vars変数を利用する方法**　<br />
+```
+- name: Create user
+  user:　<br />
+    name: "{{ item.username }}"
+    uid: "{{ item.userid }}"
+    group: "{{ item.groupname }}"
+    state: present
+  loop: "{{ os_users }}"
+```
+
+
+**パターン２：辞書のリスト**　<br />
 例：RHELのカーネルパラメータ　<br />
 | パラメータ名                 | 値                                      | 変数名                       |
 | ---------------------- | ----------------------------------------- | ---------------------------------- |
@@ -146,26 +166,28 @@ host_vars変数を利用する方法　<br />
 | net.ipv4.tcp_tw_recycle             | 0       | lst_dic-os_kernel                               |
 | net.core.somaxconn             | 511                | lst_dic-os_kernel                          |
 
-生成されるhost_vars変数、以下の通りでる。para_listは辞書のリストで、各辞書にはkeyとvalueのペアが含まれています。　<br />
-lst_dic:　<br />
-- name: os_kernel　<br />
-  para_list:　<br />
-  - key: net.ipv4.ip_local_port_range　<br />
-    value: 32768 64999　<br />
-  - key: kernel.hung_task_warnings　<br />
-    value: 10000000　<br />
-  - key: net.ipv4.tcp_tw_recycle　<br />
-    value: 0　<br />
-  - key: net.core.somaxconn　<br />
-    value: 511　<br />
-
-host_vars変数を利用する方法　<br />
-- name: debug list kernel parameters　<br />
-  debug: 　<br />
-    msg="{{ item.key }} = {{ item.value }}"　<br />
-  with_items: "{{ lst_dic | selectattr('name', 'equalto', 'os_kernel') | map(attribute='para_list') | flatten }}"　<br />
-
-パターン３：辞書のリスト、各辞書には、nameというキーと、para_listというキーがあります。para_listは文字列のリストです　<br />
+**生成されるhost_vars変数、以下の通りでる。para_listは辞書のリストで、各辞書にはkeyとvalueのペアが含まれています。**　<br />
+```
+lst_dic:
+- name: os_kernel
+  para_list:
+  - key: net.ipv4.ip_local_port_range
+    value: 32768 64999
+  - key: kernel.hung_task_warnings
+    value: 10000000
+  - key: net.ipv4.tcp_tw_recycle
+    value: 0
+  - key: net.core.somaxconn
+    value: 511
+```
+**host_vars変数を利用する方法**　<br />
+```
+- name: debug list kernel parameters
+  debug:
+    msg="{{ item.key }} = {{ item.value }}"
+  with_items: "{{ lst_dic | selectattr('name', 'equalto', 'os_kernel') | map(attribute='para_list') | flatten }}"
+```
+**パターン３：辞書のリスト、各辞書には、nameというキーと、para_listというキーがあります。para_listは文字列のリストです**　<br />
 例：httpd.confの<Directory />タグ設定　<br />
 
 
@@ -176,26 +198,29 @@ host_vars変数を利用する方法　<br />
 | Require  | all denied  | lst_lst-httpd_conf_b-para_list  |
 | Options  | FollowSymLinks  | lst_lst-httpd_conf_b-para_list  |
 
-生成されるhost_vars変数、以下の通りでる。　<br />
-lst_lst_httpd_conf_b:　<br />
-- name: <Directory />　<br />
-  para_list:　<br />
-  - AllowOverride None　<br />
-  - Require all denied　<br />
-  - Options FollowSymLinks　<br />
-  　<br />
-host_vars変数を利用する方法　<br />
-- name: debug lst_lst_httpd_conf_b　<br />
-  debug: 　<br />
-    msg:　<br />
-    - "{{ item.0.name }}"　<br />
-    - "{{ item.1 }}"　<br />
-  loop: "{{ lst_lst_httpd_conf_b|subelements('para_list') }}"　<br />
+**生成されるhost_vars変数、以下の通りでる。**　<br />
+```
+lst_lst_httpd_conf_b:
+- name: <Directory />
+  para_list:
+  - AllowOverride None
+  - Require all denied
+  - Options FollowSymLinks
+```
+
+**host_vars変数を利用する方法**　<br />
+```
+- name: debug lst_lst_httpd_conf_b
+  debug:
+    msg:
+    - "{{ item.0.name }}"
+    - "{{ item.1 }}"
+  loop: "{{ lst_lst_httpd_conf_b|subelements('para_list') }}"
   loop_control:　<br />
-    label: "{{ item.0.name }}"　<br />
-　<br />
-パターン４：パターン３と同じような形で、パラメータ名が空白である　<br />
-　<br />
+    label: "{{ item.0.name }}"
+```
+**パターン４：パターン３と同じような形で、パラメータ名が空白である**　<br />
+
 ## inventoryファイル生成
 0.hostsシートの「自動化」例に〇が付いていれば、そのホストがinventoryファイルにいれされます。　<br />
 新規ホストをhostsシートに追加した後、設定シート（例は2.apacheシート）にも該当するホストの列を追加してください。　<br />
