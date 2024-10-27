@@ -189,7 +189,7 @@ lst_dic:
   with_items: "{{ lst_dic | selectattr('name', 'equalto', 'os_kernel') | map(attribute='para_list') | flatten }}"
 ```
 **パターン３：辞書のリスト、各辞書には、nameというキーと、para_listというキーがあります。para_listは文字列のリストです**　<br />
-例：httpd.confの<Directory />タグ設定　<br />
+例：httpd.confの< Directory / >タグ設定　<br />
 
 
 | First Header  | Second Header | Second Header |
